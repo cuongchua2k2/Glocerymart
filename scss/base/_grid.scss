@@ -1,0 +1,135 @@
+/* =============grid system ============*/
+@use "sass:math";
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1370px,
+);
+
+$grid-column: 12 !default;
+$grid-gutter-width: 30px !default;
+$gutters: (
+  0: 0,
+  1: 0.25,
+  2: 0.5,
+  3: 1,
+  4: 1.5,
+  5: 3,
+);
+
+%padding-gutter {
+  padding-left: calc(var(--gutter-x) * 0.5);
+  padding-right: calc(var(--gutter-x) * 0.5);
+}
+
+.container-fluid {
+  --gutter-x: #{$grid-gutter-width};
+  --gutter-y: 0;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  @extend %padding-gutter;
+}
+
+.container {
+  @extend .container-fluid;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: calc(var(--gutter-x) * 0.5 * -1);
+  margin-right: calc(var(--gutter-x) * 0.5 * -1);
+  margin-top: calc(var(--gutter-y) * -1);
+
+  > * {
+    margin-top: var(--gutter-y);
+    @extend %padding-gutter;
+  }
+}
+
+.col {
+  flex: 1 0;
+}
+
+@mixin device($dimension, $skip: false) {
+  @if $skip {
+    @content;
+  } @else {
+    @media (min-width: $dimension) {
+      @content;
+    }
+  }
+}
+
+@mixin make-column($infix) {
+  @for $i from 1 through $grid-column {
+    .col#{$infix}-#{$i} {
+      flex: 0 0 auto;
+      width: math.div(100%, $grid-column) * $i;
+    }
+  }
+}
+
+@mixin make-row-cols($infix) {
+  @for $i from 1 through math.div($grid-column, 2) {
+    .row-cols#{$infix}-#{$i} > * {
+      width: math.div(100%, $i);
+      flex: 0 0 auto;
+    }
+  }
+}
+
+@mixin make-offset($infix) {
+  @for $i from 0 to 12 {
+    .offset#{$infix}-#{$i} {
+      margin-left: if($i>0, math.div(100%, $grid-column) * $i, 0);
+    }
+  }
+}
+
+@mixin make-gutter($infix) {
+  @each $gutter, $ratio in $gutters {
+    .g,
+    .gx#{$infix}-#{$gutter} {
+      --gutter-x: #{$grid-gutter-width * $ratio};
+    }
+    .g,
+    .gy#{$infix}-#{$gutter} {
+      --gutter-y: #{$grid-gutter-width * $ratio};
+    }
+  }
+}
+
+@each $breakpoint, $dimension in $grid-breakpoints {
+  $infix: if($breakpoint == "xs", "", -#{$breakpoint});
+  $width-infix: map-get(
+    $map: $container-max-widths,
+    $key: $breakpoint,
+  );
+  @include device($dimension, $breakpoint == "xs") {
+    .container {
+      width: $width-infix;
+    }
+    // mixin row-cols
+    @include make-row-cols($infix);
+    // mixin column
+    @include make-column($infix);
+    // mixin offsets
+    @include make-offset($infix);
+    // mixin gutter
+    @include make-gutter($infix);
+  }
+}

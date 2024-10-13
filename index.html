@@ -19,7 +19,25 @@
       href="./assets/favicon/apple-touch-icon.png"
     />
     <link rel="manifest" href="./assets/favicon/site.webmanifest" />
-    <!--  -->
+    <!-- CSS -->
+    <link rel="stylesheet" href="./assets/css/main.css" />
+    <!-- javascript -->
+    <script src="./assets/js/scripts.js"></script>
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <!-- header -->
+      <header id="header"></header>
+      <script>
+        load("#header", "./template/header.html");
+      </script>
+      <!-- main -->
+
+      <!-- footer -->
+      <footer id="footer"></footer>
+      <script>
+        load("#footer", "./template/footer.html");
+      </script>
+    </div>
+  </body>
 </html>
