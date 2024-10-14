@@ -1,0 +1,87 @@
+%flexAlignCenter{
+    display: flex;
+    align-items: center;
+}
+
+.header{
+    background-color: #eee;
+    padding: 30px 0;
+}
+
+.top-bar{
+    @extend %flexAlignCenter;
+}
+
+.navbar{
+    margin-left: 144px;
+
+    &__list{
+        @extend %flexAlignCenter;
+        gap: 30px;
+    }
+
+    &__link{
+        @extend %flexAlignCenter;
+        gap: 6px;
+        font-size: 1.5rem;
+        font-weight: 600;
+        line-height: 146.667%;
+    }
+}
+
+.top-action{
+    margin-left: auto;
+    @extend %flexAlignCenter;
+    gap: 20px;
+
+    &__group{
+        @extend %flexAlignCenter;
+        border-radius: 8px;
+        background-color: #fff;
+        
+    }
+
+    &__group--single &__btn{
+        padding: 13px;
+    }
+
+    &__btn{
+        height: 50px;
+        min-width: 50px;
+        background-color: #fff;
+        @extend %flexAlignCenter;
+        gap: 10px;
+        padding: 13px 20px;
+        border-radius: 8px;
+        box-shadow: 0px 20px 60px 10px rgba(237, 237, 246, 0.20);
+        cursor: pointer;
+    }
+
+    &__icon{
+        height: 24px;
+        width: 24px;
+        object-fit: cover;
+    }
+
+    &__title{
+        font-size: 1.5rem;
+        font-weight: 600;
+        line-height: 146.667%;
+    }
+
+    &__seperate{
+        width: 1px;
+        height: 30px;
+        background-color: #EDEDF6;
+    }
+
+    &__avatar{
+        display: block;
+        height: 50px;
+        width: 50px;
+        object-fit: cover;
+        border-radius: 8px;
+        background-color: #DFD2FA;
+        box-shadow: 0px 4px 14px 2px rgba(0, 0, 0, 0.08);
+    }
+}
