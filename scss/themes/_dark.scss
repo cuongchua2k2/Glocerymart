@@ -1,0 +1,18 @@
+@use "../abstracts";
+
+html.dark {
+  --text-color: #fff;
+  --color-icon: brightness(0) saturate(100%) invert(99%) sepia(1%)
+    saturate(4404%) hue-rotate(284deg) brightness(114%) contrast(100%);
+  --bg-color-header: #171c28;
+  --bg-color-body: #292e39;
+  --bg-top-action-group: #292e39;
+  --bg-shadow-top-action: rgba(0, 0, 0, 0.2);
+  --bg-color-seperate: #ededf6;
+
+  // drop down
+  --bg-color-dropdown: #3d424b;
+  --box-shadow-dropdown: rgba(23, 28, 40, 0.4);
+  --color-arrow-dropdown: brightness(0) saturate(100%) invert(26%) sepia(23%)
+    saturate(252%) hue-rotate(180deg) brightness(91%) contrast(96%);
+}

@@ -8,33 +8,32 @@ html {
   font-size: 62.5%;
 }
 
-:root{
-  --text-color: #1A162E;
-  --color-icon:  brightness(0) saturate(100%) invert(7%) sepia(8%) saturate(4697%) hue-rotate(211deg) brightness(106%) contrast(96%);
-}
-
 body {
   font-family: "Gordita", sans-serif;
   font-size: 1.6rem;
   color: var(--text-color);
+  background-color: var(--bg-color-body);
 }
 
-a{
+a {
   color: inherit;
   text-decoration: none;
 }
 
-button{
+button {
   outline: none;
   border: none;
 }
 
-button,input,textarea,select{
-color: inherit;
-background-color: transparent;
-font-family: inherit;
+button,
+input,
+textarea,
+select {
+  color: inherit;
+  background-color: transparent;
+  font-family: inherit;
 }
 
-.icon{
+.icon {
   filter: var(--color-icon);
 }
