@@ -1,13 +1,20 @@
+@use "../abstracts";
+
 .drop-down {
+  color: var(--text-color-dropdown);
   position: absolute;
+  width: min(1240px, 100%);
   left: 0;
   z-index: 999;
   padding-top: 55px;
   display: none;
-  cursor: pointer;
 
   &__inner {
-    padding: 30px;
+    --width-column: 292px;
+    --padding-dropdown-common: 30px;
+    --height-content-dropdown: min(582px, 100vh - 148px);
+    height: var(--height-content-dropdown);
+    padding: var(--padding-dropdown-common);
     border-radius: 20px;
     background-color: var(--bg-color-dropdown);
     box-shadow: 0px 40px 90px 20px var(--box-shadow-dropdown);
@@ -21,5 +28,126 @@
       translate: -50% 0;
       filter: var(--color-arrow-dropdown);
     }
+    
   }
+
+  &__top {
+    position: relative;
+    height: 100%;
+
+  }
+
+  &__top--modify{
+    overflow: auto;
+    .sub-menu--modify{
+      display: grid;
+      grid-template-columns:repeat(4,1fr);
+      overflow: auto;
+      
+    }
+  }
+
+  &__icon {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+
+    @include abstracts.breakpoint(xl){
+      width: 30px;
+      height: 30px;
+    }
+
+    &-shape {
+      height: 30px;
+      width: 30px;
+      object-fit: contain;
+      @include abstracts.breakpoint(xl){
+        width: 24px;
+        height: 24px;
+      }
+    }
+    
+
+    &-platform {
+      height: 24px;
+      width: 24px;
+      object-fit: conatin;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      filter: var(--icon-color-dropdown);
+      @include abstracts.breakpoint(xl){
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
+
+  &__content {
+    width: var(--width-column);
+    border-right: 1px solid var(--border-color-dropdown);
+    height: 101%;
+    overflow-y: auto;
+  }
+
+  &__column {
+    display: flex;
+    gap: 14px;
+
+    @include abstracts.breakpoint(xl){
+      gap: 9px;
+    }
+  }
+
+  &__menu {
+    flex: 1;
+  }
+
+  &__title {
+    padding-top: 6px;
+    font-size: 1.6rem;
+    font-weight: 600;
+    line-height: 150%;
+  }
+
+  &__list {
+    margin-top: 19px;
+  }
+
+  &__item--active > .drop-down__link,
+  &__item:hover > .drop-down__link {
+    color: #0071dc;
+  }
+
+  &__item {
+    .sub-menu {
+      overflow-y: auto;
+      display: none;
+      grid-template-columns: repeat(3, 1fr);
+      position: absolute;
+      inset: 0 0 0 var(--width-column);
+      padding-left: var(--padding-dropdown-common);
+    }
+
+    &--active .sub-menu {
+      display: grid;
+    }
+
+  }
+
+  .sub-menu__column {
+    display: flex;
+    flex-direction: column;
+    gap: 23px;
+  }
+
+  &__link {
+    display: block;
+    padding: 7px 0;
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 142.857%;
+  }
+
 }

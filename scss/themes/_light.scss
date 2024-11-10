@@ -5,14 +5,19 @@
   --color-icon: brightness(0) saturate(100%) invert(7%) sepia(8%)
     saturate(4697%) hue-rotate(211deg) brightness(106%) contrast(96%);
   --bg-color-header: #eee;
-  --bg-color-body: #fff;
+  --bg-color-body: #f6f6f6;
   --bg-top-action-group: #fff;
   --bg-shadow-top-action: rgba(237, 237, 246, 0.2);
-  --bg-color-seperate: #ededf6;
   // drop down
+  --text-color-dropdown: #1a162e;
   --bg-color-dropdown: #ffffff;
   --box-shadow-dropdown: rgba(200, 200, 200, 0.4);
-  @include abstracts.breakpoint(sm) {
+  --color-arrow-dropdown: brightness(0) saturate(100%) invert(98%) sepia(41%)
+    saturate(0%) hue-rotate(223deg) brightness(118%) contrast(100%);
+  --icon-color-dropdown: brightness(0) saturate(100%) invert(7%) sepia(15%)
+    saturate(3796%) hue-rotate(219deg) brightness(91%) contrast(95%);
+  --border-color-dropdown: #d2d1d6;
+  @include abstracts.breakpoint(md) {
     --bg-color-header: #fff;
     --bg-color-body: #f6f6f6;
   }

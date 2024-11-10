@@ -9,10 +9,12 @@ html.dark {
   --bg-top-action-group: #292e39;
   --bg-shadow-top-action: rgba(0, 0, 0, 0.2);
   --bg-color-seperate: #ededf6;
-
+  
   // drop down
+  --text-color-dropdown:#B9BABE;
   --bg-color-dropdown: #3d424b;
   --box-shadow-dropdown: rgba(23, 28, 40, 0.4);
-  --color-arrow-dropdown: brightness(0) saturate(100%) invert(26%) sepia(23%)
-    saturate(252%) hue-rotate(180deg) brightness(91%) contrast(96%);
+  --color-arrow-dropdown: brightness(0) saturate(100%) invert(26%) sepia(23%) saturate(252%) hue-rotate(180deg) brightness(91%) contrast(96%);
+  --border-color-dropdown:#171C28;
+  --icon-color-dropdown:brightness(0) saturate(100%) invert(100%) sepia(22%) saturate(559%) hue-rotate(180deg) brightness(100%) contrast(97%);
 }
